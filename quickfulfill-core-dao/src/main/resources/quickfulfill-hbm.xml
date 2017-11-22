@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.quickfulfill.dao.pojo.Sellers" table="Sellers">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="sellerId" type="string">
+			<column name="sellerId" />
+		</property>
+		<property name="sellerName" type="string">
+			<column name="sellerName" />
+		</property>
+		<property name="address1" type="string">
+			<column name="Address1" />
+		</property>
+		<property name="address2" type="string">
+			<column name="Address2" />
+		</property>
+		<property name="city" type="string">
+			<column name="city" />
+		</property>
+		<property name="state" type="string">
+			<column name="state" />
+		</property>
+		<property name="pincode" type="string">
+			<column name="pincode" />
+		</property>
+		<property name="sellerHandlingTime" type="string">
+			<column name="sellerHandlingTime" />
+		</property>
+		<property name="TSHIP" type="boolean">
+			<column name="TSHIP" />
+		</property>
+		<property name="SSHIP" type="boolean">
+			<column name="SSHIP" />
+		</property>
+		<property name="primaryFulfillment" type="string">
+			<column name="primaryFulfillment" />
+		</property>
+		<property name="Active" type="boolean">
+			<column name="Active" />
+		</property>
+		<property name="creationTime" type="date">
+			<column name="creationTime" />
+		</property>
+		<property name="modifiedTime" type="date">
+			<column name="modifiedTime" />
+		</property>
+	</class>
+	<class name="com.quickfulfill.dao.pojo.Locations" table="Locations">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="sellerId" type="string">
+			<column name="sellerId" />
+		</property>
+		<property name="locationId" type="string">
+			<column name="locationId" />
+		</property>
+		<property name="locationType" type="string">
+			<column name="locationType" />
+		</property>
+		<property name="lat" type="string">
+			<column name="lat" />
+		</property>
+		<property name="openingTime" type="string">
+			<column name="openingTime" />
+		</property>
+		<property name="closingTime" type="string">
+			<column name="closingTime" />
+		</property>
+		<property name="workingDays" type="string">
+			<column name="workingDays" />
+		</property>
+		<property name="address1" type="string">
+			<column name="address1" />
+		</property>
+		<property name="address2" type="string">
+			<column name="address2" />
+		</property>
+		<property name="city" type="string">
+			<column name="city" />
+		</property>
+		<property name="state" type="string">
+			<column name="state" />
+		</property>
+		<property name="pincode" type="string">
+			<column name="pincode" />
+		</property>
+		<property name="active" type="boolean">
+			<column name="active" />
+		</property>
+		<property name="feederInfoList" type="string">
+			<column name="feederInfoList" />
+		</property>
+		<property name="creationTime" type="date">
+			<column name="creationTime" />
+		</property>
+		<property name="modifiedTime" type="date">
+			<column name="modifiedTime" />
+		</property>
+	</class>
+	<class name="com.quickfulfill.dao.pojo.SellerServiceability"
+		table="SellerServiceability">
+
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="creationTime" type="date">
+			<column name="creationTime" />
+		</property>
+		<property name="modifiedTime" type="date">
+			<column name="modifiedTime" />
+		</property>
+
+		<property name="sellerId" type="string">
+			<column name="sellerId" />
+		</property>
+		<property name="pincode" type="string">
+			<column name="pincode" />
+		</property>
+		<property name="fulfilmentType" type="string">
+			<column name="fulfilmentType" />
+		</property>
+		<property name="transportMode" type="string">
+			<column name="transportMode" />
+		</property>
+		<property name="deliveryMode" type="string">
+			<column name="deliveryMode" />
+		</property>
+		<property name="locationList" type="string">
+			<column name="locationList" />
+		</property>
+	</class>
+	<class name="com.quickfulfill.dao.pojo.LocationSlotInfo" table="LocationSlotInfo">
+
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="creationTime" type="date">
+			<column name="creationTime" />
+		</property>
+		<property name="modifiedTime" type="date">
+			<column name="modifiedTime" />
+		</property>
+
+		<property name="locationId" type="string">
+			<column name="locationId" />
+		</property>
+		<property name="slotFrom" type="string">
+			<column name="slotFrom" />
+		</property>
+		<property name="slotTo" type="string">
+			<column name="slotTo" />
+		</property>
+		<property name="slotCapacity" type="string">
+			<column name="slotCapacity" />
+		</property>
+		<property name="Active" type="boolean">
+			<column name="Active" />
+		</property>
+
+	</class>
+	<class name="com.quickfulfill.dao.pojo.Logistics" table="Logistics">
+
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="creationTime" type="date">
+			<column name="creationTime" />
+		</property>
+		<property name="modifiedTime" type="date">
+			<column name="modifiedTime" />
+		</property>
+
+		<property name="logisticId" type="string">
+			<column name="logisticId" />
+		</property>
+		<property name="logisticName" type="string">
+			<column name="logisticName" />
+		</property>
+		<property name="workingDays" type="string">
+			<column name="workingDays" />
+		</property>
+		<property name="scheduled" type="boolean">
+			<column name="scheduled" />
+		</property>
+		<property name="active" type="boolean">
+			<column name="active" />
+		</property>
+		<property name="slotFrom" type="string">
+			<column name="slotFrom" />
+		</property>
+		<property name="slotTo" type="string">
+			<column name="slotTo" />
+		</property>
+	</class>
+	<class name="com.quickfulfill.dao.pojo.Logistics" table="Logistics">
+
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="creationTime" type="date">
+			<column name="creationTime" />
+		</property>
+		<property name="modifiedTime" type="date">
+			<column name="modifiedTime" />
+		</property>
+
+		<property name="logisticId" type="string">
+			<column name="logisticId" />
+		</property>
+		<property name="logisticName" type="string">
+			<column name="logisticName" />
+		</property>
+		<property name="workingDays" type="string">
+			<column name="workingDays" />
+		</property>
+		<property name="scheduled" type="boolean">
+			<column name="scheduled" />
+		</property>
+		<property name="active" type="boolean">
+			<column name="active" />
+		</property>
+		<property name="slotFrom" type="string">
+			<column name="slotFrom" />
+		</property>
+		<property name="slotTo" type="string">
+			<column name="slotTo" />
+		</property>
+	</class>
+	<class name="com.quickfulfill.dao.pojo.LocationHolidays" table="LocationHolidays">
+
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="creationTime" type="date">
+			<column name="creationTime" />
+		</property>
+		<property name="modifiedTime" type="date">
+			<column name="modifiedTime" />
+		</property>
+		<property name="locationId" type="string">
+			<column name="locationId" />
+		</property>
+
+		<property name="holidayDate" type="date">
+			<column name="holidayDate" />
+		</property>
+		<property name="active" type="boolean">
+			<column name="active" />
+		</property>
+
+	</class>
+	<class name="com.quickfulfill.dao.pojo.PFSDLogisticServiceability"
+		table="PFSDLogisticServiceability">
+
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="creationTime" type="date">
+			<column name="creationTime" />
+		</property>
+		<property name="modifiedTime" type="date">
+			<column name="modifiedTime" />
+		</property>
+		<property name="logisticid" type="string">
+			<column name="logisticid" />
+		</property>
+
+		<property name="deliverymode" type="string">
+			<column name="deliverymode" />
+		</property>
+		<property name="transportmode" type="string">
+			<column name="transportmode" />
+		</property>
+		<property name="srcpincode" type="string">
+			<column name="srcpincode" />
+		</property>
+		<property name="destpincode" type="string">
+			<column name="destpincode" />
+		</property>
+
+		<property name="fragile" type="boolean">
+			<column name="fragile" />
+		</property>
+		<property name="precious" type="boolean">
+			<column name="precious" />
+		</property>
+		<property name="scheduled" type="boolean">
+			<column name="scheduled" />
+		</property>
+		<property name="deliveryTat" type="int">
+			<column name="deliveryTat" />
+		</property>
+		<property name="active" type="boolean">
+			<column name="active" />
+		</property>
+	</class>
+</hibernate-mapping>

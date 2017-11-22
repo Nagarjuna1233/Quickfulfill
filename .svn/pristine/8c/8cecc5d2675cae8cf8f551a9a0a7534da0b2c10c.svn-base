@@ -1,0 +1,52 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd 
+	http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+ 
+
+	<!-- Commons -->
+	<import resource="classpath:quickfulfill-service-spring.xml" />
+	<import resource="classpath:quickfulfill-oms-web-spring.xml" />
+	<import resource="classpath:quickfulfill-buc-spring.xml" />
+	<import resource="classpath:quickfulfill-logistic-service-spring.xml" />
+	<import resource="classpath:quickfulfill-pincode-serviceability-spring.xml" />
+	<import resource="classpath:quickfulfill-rest-client-api-spring.xml" />
+	<import resource="classpath:quickfulfill-core-dao-spring.xml" />
+	
+	<bean id="mailProperties"
+    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" />
+ 
+    <bean id="appProperties"
+    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations">
+        <list>
+            <value>classpath:quickfulfill-oms-web.properties</value>
+            <value>classpath:quickfulfill-buc.properties</value>
+            <value>classpath:quickfulfill-service.properties</value>
+            <value>classpath:quickfulfill-logistic-service.properties</value>
+            <value>classpath:quickfulfill-pincode-serviceability.properties</value>
+            <value>classpath:quickfulfill-rest-client-api.properties</value>
+            <value>classpath:quickfulfill-core-dao.properties</value>
+        </list>
+    </property>
+     <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_NEVER" />
+     <property name="ignoreResourceNotFound" value="true" />
+     <property name="ignoreUnresolvablePlaceholders" value="true" />
+   </bean>
+
+	<context:component-scan base-package="com.quickfulfill.demo.rest" />
+	
+	<bean class="com.quickfulfill.demo.rest.DemoRest">
+	<property name="demoService" ref="demoservice"/>
+	</bean>
+	
+	<mvc:default-servlet-handler />
+	<mvc:annotation-driven/>
+	<mvc:resources mapping="/resources/**" location="/, classpath:asserts/" cache-period="10000" />
+</beans>

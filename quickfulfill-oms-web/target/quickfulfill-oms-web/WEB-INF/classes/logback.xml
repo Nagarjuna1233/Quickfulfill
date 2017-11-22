@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<!-- <property file="${CATALINA_HOME}/lib/com.techouts.quickfill-web.properties" /> -->
+<appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>../logs/oms-ext-web.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- rollover daily -->
+      <fileNamePattern>../logs/oms-ext-web-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy
+            class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <!-- or whenever the file size reaches 100MB -->
+        <maxFileSize>100MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+    <encoder>
+      <Pattern>%d [%-5level][%t][%c][%X{tenant}][%X{requestId}] %m%n</Pattern>
+    </encoder>
+  </appender>
+  
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+	
+	<appender name="RESOURCE-PROFILER" class="ch.qos.logback.core.FileAppender">
+        <file> ../logs/com.hybris.oms_resource_profiler.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d [%-5level][%t][%c][%X{tenant}][%X{requestId}] %m%n</pattern>
+        </encoder>
+    </appender>
+
+	<logger name="org.springframework" level="debug" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger name="com.quickfulfill.demo.rest" level="debug" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	 
+	<root level="error">
+		<appender-ref ref="STDOUT" />
+	</root>
+	
+	<root level="debug">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>
